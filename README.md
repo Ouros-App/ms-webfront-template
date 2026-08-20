@@ -1,5 +1,17 @@
 # MS Webfront Template
 
+<!-- REPO-METADATA:START -->
+<div align="center">
+
+[![Repo Size](https://img.shields.io/github/repo-size/Ouros-App/ms-webfront-template?style=flat-square&label=REPO%20SIZE)](https://github.com/Ouros-App/ms-webfront-template)
+[![Languages](https://img.shields.io/github/languages/count/Ouros-App/ms-webfront-template?style=flat-square&label=LANGUAGES)](https://github.com/Ouros-App/ms-webfront-template/languages)
+[![Forks](https://img.shields.io/github/forks/Ouros-App/ms-webfront-template?style=flat-square&label=FORKS)](https://github.com/Ouros-App/ms-webfront-template/network/members)
+[![Issues](https://img.shields.io/github/issues/Ouros-App/ms-webfront-template?style=flat-square&label=ISSUES)](https://github.com/Ouros-App/ms-webfront-template/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Ouros-App/ms-webfront-template?style=flat-square&label=PULL%20REQUESTS)](https://github.com/Ouros-App/ms-webfront-template/pulls)
+
+</div>
+<!-- REPO-METADATA:END -->
+
 Template de frontend web com React, TypeScript, Vite e Tailwind CSS. O projeto inclui os scripts de desenvolvimento, build, lint e publicação da aplicação estática com Docker e Nginx.
 
 ## Status e escopo
@@ -116,3 +128,12 @@ Mantenha a organização existente, atualize a documentação quando alterar scr
 ## Licença
 
 Este projeto está sob a licença MIT. Consulte LICENSE para o texto completo.
+
+
+## Principais contribuidores
+
+<!-- CONTRIBUTORS:START -->
+- [@Nicolas25vlad](https://github.com/Nicolas25vlad) — 10 contribuições
+<!-- CONTRIBUTORS:END -->
+
+> Atualizado automaticamente semanalmente pelo workflow de metadados do README.
