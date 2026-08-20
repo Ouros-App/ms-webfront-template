@@ -1,19 +1,94 @@
 # MS Webfront Template
 
-Template base para frontend web com React, TypeScript, Vite e Tailwind CSS, já organizado para aplicações com consumo de API, autenticação, rotas privadas, hooks reutilizáveis e deploy via Docker.
+Template de frontend web com React, TypeScript, Vite e Tailwind CSS. O projeto inclui os scripts de desenvolvimento, build, lint e publicação da aplicação estática com Docker e Nginx.
 
-## Stack
+## Status e escopo
 
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS
-- React Router
-- Docker + Nginx
+Este repositório é um template base para aplicações web. O pacote está marcado como privado em package.json e o código de aplicação fica em src/.
 
-## Estrutura
+## Principais componentes
 
-```text
+- React, React DOM e React Router DOM.
+- TypeScript, Vite, Tailwind CSS, PostCSS e ESLint.
+- DOMPurify declarado como dependência de runtime.
+- Organização em src/components, src/context, src/hooks, src/pages, src/reducers, src/routes, src/services, src/types e src/utils.
+- Dockerfile com etapa de build em Node 22 Alpine e etapa de publicação em Nginx 1.27 Alpine.
+- Scripts run.sh e run_compose.sh para construir e executar contêineres.
+
+## Pré-requisitos
+
+- Node.js e npm para desenvolvimento local. A imagem de build do Docker usa Node 22 Alpine.
+- Docker para os fluxos de contêiner.
+- Docker Compose para o fluxo baseado em run_compose.sh.
+
+## Instalação e configuração
+
+Na raiz do repositório:
+
+~~~bash
+npm install
+cp .env.example .env
+~~~
+
+Ajuste o arquivo .env conforme o ambiente:
+
+| Variável | Uso no projeto |
+| --- | --- |
+| APP_NAME | Nome-base usado pelos scripts de contêiner. |
+| VITE_APP_TITLE | Título configurável da aplicação. |
+| VITE_API_URL | URL configurável da API. |
+| VITE_STORAGE_VERSION | Versão configurável do armazenamento. |
+| PORT | Porta usada pelo servidor de desenvolvimento/preview. |
+
+O arquivo .env não deve ser versionado.
+
+## Execução e uso
+
+Desenvolvimento:
+
+~~~bash
+npm run dev
+~~~
+
+O servidor Vite usa a porta 5173 por padrão e aceita PORT. Para gerar e servir o build:
+
+~~~bash
+npm run build
+npm run preview
+~~~
+
+O preview usa a porta 4173 por padrão.
+
+Para Docker, os scripts definidos no package.json podem ser usados diretamente:
+
+~~~bash
+npm run docker:run
+npm run docker:compose
+~~~
+
+Também é possível chamar os scripts explicitamente:
+
+~~~bash
+bash ./run.sh
+bash ./run_compose.sh
+~~~
+
+Os dois fluxos exigem .env. run.sh cria uma imagem e um contêiner numerado usando APP_NAME e escolhe uma porta livre; run_compose.sh gera um arquivo docker-compose.N.yml e inicia a aplicação em uma porta livre.
+
+## Testes e qualidade
+
+O package.json define:
+
+~~~bash
+npm run lint
+npm run build
+~~~
+
+Não há script de testes automatizados definido no package.json.
+
+## Estrutura do projeto
+
+~~~text
 src/
   components/
   context/
@@ -24,48 +99,20 @@ src/
   services/
   types/
   utils/
-```
+public/
+docker/
+  nginx/
+Dockerfile
+package.json
+.env.example
+run.sh
+run_compose.sh
+~~~
 
-## Como usar
+## Contribuição
 
-```bash
-npm install
-npm run dev
-```
+Mantenha a organização existente, atualize a documentação quando alterar scripts ou variáveis de ambiente e envie a mudança em uma pull request com descrição objetiva.
 
-Aplicação local padrão:
+## Licença
 
-- Dev: `http://localhost:5173`
-- Preview/Docker: `http://localhost:4173` ou porta aleatória exposta pelos scripts
-
-## Variáveis de ambiente
-
-Copie `.env.example` para `.env` e ajuste:
-
-```env
-APP_NAME=ms-webfront-template
-VITE_APP_TITLE=MS Webfront Template
-VITE_API_URL=http://localhost:8000/api
-VITE_STORAGE_VERSION=v1
-PORT=4173
-```
-
-## Docker
-
-Build e execução simples:
-
-```bash
-bash ./run.sh
-```
-
-Compose com instância incremental:
-
-```bash
-bash ./run_compose.sh
-```
-
-## Publicação
-
-Atualize este campo com o link final da aplicação publicada:
-
-- Produção: `https://seu-dominio-ou-app-publicado`
+Este projeto está sob a licença MIT. Consulte LICENSE para o texto completo.
